@@ -184,7 +184,12 @@ export default class Part{
 		let props={}
 
 		if(identify){
-			let model=identify(node,this)
+                       let model=null;
+                       try {
+                         model = identify(node,this);
+                       } catch(e) {
+                         // ignore nodes that can't be identified
+                       }
 			if(!model)
 				return null
 
